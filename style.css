@@ -7,12 +7,16 @@
 
 :root {
     --color-text: #1a1a1a;
-    --color-text-light: #666;
+    --color-text-light: #555;
     --color-bg: #ffffff;
-    --color-accent: #2563eb;
-    --color-accent-hover: #1d4ed8;
-    --color-border: #e5e5e5;
-    --color-card-bg: #fafafa;
+    --color-accent: #6366f1;
+    --color-accent-hover: #4f46e5;
+    --color-secondary: #14b8a6;
+    --color-tertiary: #f43f5e;
+    --color-border: #e2e8f0;
+    --color-card-bg: #f8fafc;
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+    --gradient-subtle: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
     --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
     --max-width: 800px;
     --spacing: 2rem;
@@ -67,7 +71,7 @@ nav {
 
 .logo {
     font-weight: 600;
-    color: var(--color-text);
+    color: var(--color-accent);
     font-size: 1.1rem;
 }
 
@@ -102,12 +106,17 @@ header h1 {
     font-weight: 700;
     margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .tagline {
-    color: var(--color-text-light);
+    color: var(--color-accent);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    font-weight: 500;
 }
 
 .intro {
@@ -125,27 +134,31 @@ header h1 {
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background: var(--color-accent);
+    background: var(--gradient-primary);
     color: white;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 500;
-    transition: background 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
 }
 
 .btn:hover {
-    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
     color: white;
 }
 
 .btn-outline {
     background: transparent;
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
+    border: 2px solid var(--color-accent);
+    color: var(--color-accent);
 }
 
 .btn-outline:hover {
-    background: var(--color-card-bg);
-    color: var(--color-text);
+    background: var(--color-accent);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(99, 102, 241, 0.3);
 }
 
 /* Main content */
@@ -165,6 +178,7 @@ section h2 {
     font-weight: 600;
     margin-bottom: 2rem;
     letter-spacing: -0.01em;
+    color: var(--color-accent);
 }
 
 /* Timeline (Education & Experience) */
@@ -184,6 +198,11 @@ section h2 {
     color: var(--color-text-light);
     font-size: 0.9rem;
     padding-top: 0.2rem;
+}
+
+.timeline-content {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
 }
 
 .timeline-content h3 {
@@ -216,8 +235,14 @@ section h2 {
 .project-card {
     background: var(--color-card-bg);
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
 }
 
 .project-card h3 {
@@ -240,12 +265,13 @@ section h2 {
 }
 
 .project-tech span {
-    background: var(--color-bg);
-    border: 1px solid var(--color-border);
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    border: none;
     padding: 0.25rem 0.75rem;
-    border-radius: 4px;
+    border-radius: 20px;
     font-size: 0.8rem;
-    color: var(--color-text-light);
+    color: #6366f1;
+    font-weight: 500;
 }
 
 .project-links {
@@ -280,8 +306,31 @@ section h2 {
     background: var(--color-card-bg);
     border: 1px solid var(--color-border);
     padding: 0.5rem 1rem;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.skill-tags span:hover {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+}
+
+/* Alternate skill tag colors */
+.skill-category:nth-child(1) .skill-tags span:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+.skill-category:nth-child(2) .skill-tags span:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+
+.skill-category:nth-child(3) .skill-tags span:hover {
+    background: var(--color-tertiary);
+    border-color: var(--color-tertiary);
 }
 
 /* Contact */
